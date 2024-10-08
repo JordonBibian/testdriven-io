@@ -1,0 +1,3 @@
+build:
+  docker:
+    web: /usr/flask-tdd-docker/Dockerfile.prod
