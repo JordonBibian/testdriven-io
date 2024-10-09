@@ -30,3 +30,4 @@ def add_user():
         db.session.commit()
         return user
     return _add_user
+

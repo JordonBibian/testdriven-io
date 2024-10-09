@@ -1,4 +1,4 @@
-# src/api/ping.py
+#  src/api/ping.py
 
 from flask import Blueprint
 from flask_restx import Resource, Api
@@ -12,5 +12,6 @@ class Ping(Resource):
             'status': 'success',
             'message': 'pong!'
         }
-    
+
+
 api.add_resource(Ping, '/ping')

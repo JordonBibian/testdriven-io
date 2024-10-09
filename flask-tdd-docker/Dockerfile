@@ -5,11 +5,8 @@ FROM python:3.12.0-slim-bookworm
 WORKDIR /usr/src/app
 
 # set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV FLASK_DEBUG=0
-ENV FLASK_ENV=production
-ENV APP_SETTINGS=src.config.ProductionConfig
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 # install system dependencies
 RUN apt-get update \
@@ -23,9 +20,6 @@ RUN pip install -r requirements.txt
 # add app
 COPY . .
 
-# add and run as non-root user
-RUN adduser --disabled-password myuser
-USER myuser
-
-# run gunicorn
-CMD gunicorn --bind 0.0.0.0:$PORT manage:app
+# add entrypoint.sh
+COPY ./entrypoint.sh .
+RUN chmod +x /usr/src/app/entrypoint.sh
